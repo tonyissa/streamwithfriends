@@ -37,3 +37,7 @@ body {
     box-shadow:  2px 2px 10px #202026,
                  -2px -2px 10px #26262c;
 }
+
+.link { color: rgb(27, 117, 208); text-decoration: underline; }
+.link:visited { color: rgb(57, 63, 172); }
+.link:active, .link:visited:active { color: #FF0000; }

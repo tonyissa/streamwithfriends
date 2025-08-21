@@ -6,6 +6,7 @@ const AppLayout = lazy(() => import("./layout/AppLayout"));
 const ServerSetupPage = lazy(() => import("./pages/ServerSetup"));
 const RootHandler = lazy(() => import("./components/RootHandler"));
 const LoginPage = lazy(() => import("./pages/Login"));
+const RegisterPage = lazy(() => import("./pages/Register"));
 
 export default function Router() {
   return (
@@ -13,9 +14,9 @@ export default function Router() {
       <Routes>
         <Route path="/" element={ <AppLayout /> }>
           <Route index element={ <RootHandler /> } />
-          <Route path="server-setup" element={ <ServerSetupPage /> }>
-            <Route path="login" element={ <LoginPage /> } />
-          </Route>
+          <Route path="server-setup" element={ <ServerSetupPage /> } />
+          <Route path="login" element={ <LoginPage /> } />
+          <Route path="register" element={ <RegisterPage /> } />
         </Route>
       </Routes>
     </BrowserRouter>
