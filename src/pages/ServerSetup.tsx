@@ -17,10 +17,13 @@ export default function ServerSetup() {
         if (!input) {
             setError("Please set a server URL");
             return;
+        } else if (!input.endsWith(".app")) {
+            setError("Invalid server URL");
+            return;
         }
 
         setServerURL(input);
-        navigate("/");
+        navigate("/", { state: { from: "server-setup" } });
     }
 
     return (

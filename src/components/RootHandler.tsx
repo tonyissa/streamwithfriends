@@ -21,7 +21,11 @@ export default function RootHandler() {
                 if (!healthResponse.ok)
                     throw new Error("Health check failed");
 
-                const authResponse = await fetch(`${serverURL}/api/auth/verify`, { credentials: 'include', headers: { "ngrok-skip-browser-warning": "true" } });
+                const authResponse = await fetch(`${serverURL}/api/auth/verify`, { 
+                    credentials: 'include', 
+                    headers: { "ngrok-skip-browser-warning": "true" }
+                 });
+                 
                 if (authResponse.ok) {
                     const data: AuthResponse = await authResponse.json();
                     setIsAuthenticated(true);
