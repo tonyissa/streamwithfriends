@@ -1,10 +1,12 @@
 import { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthResponse } from "../types/Responses";
 
 export default function RootHandler() {
     const { serverURL, setIsAuthenticated, setUsername, setRole} = useContext(AppContext);
+    const location = useLocation();
+    const from = location.state?.from;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,11 +17,11 @@ export default function RootHandler() {
             }
 
             try {
-                const healthResponse = await fetch(`${serverURL}/api/health`);
+                const healthResponse = await fetch(`${serverURL}/api/health`, { headers: { "ngrok-skip-browser-warning": "" } });
                 if (!healthResponse.ok)
                     throw new Error("Health check failed");
 
-                const authResponse = await fetch(`${serverURL}/api/auth/verify`, { credentials: 'include' });
+                const authResponse = await fetch(`${serverURL}/api/auth/verify`, { credentials: 'include', headers: { "ngrok-skip-browser-warning": "true" } });
                 if (authResponse.ok) {
                     const data: AuthResponse = await authResponse.json();
                     setIsAuthenticated(true);
@@ -31,12 +33,13 @@ export default function RootHandler() {
                 }
             } catch (err) {
                 console.error("Check failed: ", err);
-                navigate("server-setup", { state: { err: "There was an error with your request." } });
+                const state = from ? { state: { err: "There was an error with your request." } } : {};
+                navigate("server-setup", state);
             }
         }
 
         performChecks();
-    }, [navigate, serverURL, setIsAuthenticated, setRole, setUsername]);
+    }, [navigate, serverURL, setIsAuthenticated, setRole, setUsername, from]);
 
     return <div>Loading...</div>;
 }
