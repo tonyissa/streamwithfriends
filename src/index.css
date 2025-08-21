@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+    --color-darkGrey: #232329;
+    --color-tealqoise: #00ffc8;
+}
+
 /* Resets */
 /* 1. Use a more-intuitive box-sizing model */
 *,
@@ -17,9 +22,6 @@ body {
     /* 4. Improve text rendering */
     -webkit-font-smoothing: antialiased;
     cursor: auto;
-    background-color: var(--color-darkNavy);
-    color: var(--color-coolIvory);
-    font-family: "Inter", serif;
 }
 
 button,
