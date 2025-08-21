@@ -12,5 +12,5 @@ export default function Header() {
                 StreamWithFriends
             </h1>
         </header>
-    )
+    );
 }

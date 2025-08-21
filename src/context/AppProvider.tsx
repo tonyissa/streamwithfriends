@@ -33,5 +33,5 @@ export function AppProvider({ children }: AppProps) {
         >
             {children}
         </AppContext.Provider>
-    )
+    );
 }
