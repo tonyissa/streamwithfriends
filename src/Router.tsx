@@ -7,6 +7,8 @@ const ServerSetupPage = lazy(() => import("./pages/ServerSetup"));
 const RootHandler = lazy(() => import("./components/RootHandler"));
 const LoginPage = lazy(() => import("./pages/Login"));
 const RegisterPage = lazy(() => import("./pages/Register"));
+const HomePage = lazy(() => import("./pages/Home"));
+const ProtectedLayout = lazy(() => import("./layout/ProtectedLayout"));
 
 export default function Router() {
   return (
@@ -17,6 +19,9 @@ export default function Router() {
           <Route path="server-setup" element={ <ServerSetupPage /> } />
           <Route path="login" element={ <LoginPage /> } />
           <Route path="register" element={ <RegisterPage /> } />
+          <Route path="home" element={ <ProtectedLayout /> }>
+            <Route index element={ <HomePage /> } />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

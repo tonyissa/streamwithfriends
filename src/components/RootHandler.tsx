@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthResponse } from "../types/Responses";
 
 export default function RootHandler() {
-    const { serverURL, setIsAuthenticated, setUsername, setRole} = useContext(AppContext);
+    const { serverURL, setIsAuthenticated, setUsername, setRole } = useContext(AppContext);
     const location = useLocation();
     const from = location.state?.from;
     const navigate = useNavigate();
@@ -17,8 +17,9 @@ export default function RootHandler() {
             }
 
             try {
-                const healthResponse = await fetch(`${serverURL}/api/health`, { headers: { "ngrok-skip-browser-warning": "" } });
-                if (!healthResponse.ok)
+                const healthResponse = await fetch(`${serverURL}/api/health`, { headers: { "ngrok-skip-browser-warning": "true" } });
+                const validHeader = healthResponse.headers.has("Streamwithfriends");
+                if (!healthResponse.ok || !validHeader)
                     throw new Error("Health check failed");
 
                 const authResponse = await fetch(`${serverURL}/api/auth/verify`, { 

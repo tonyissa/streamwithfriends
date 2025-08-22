@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext";
 import type { LoginResponse } from "../types/Responses";
 
 export default function Login() {
-    const { serverURL, setRole, setUsername } = useContext(AppContext);
+    const { serverURL, setRole, setUsername, setIsAuthenticated } = useContext(AppContext);
     const [error, setError] = useState<string>("");
     const [userField, setUserField] = useState<string>("");
     const [passField, setPassField] = useState<string>("");
@@ -36,6 +36,7 @@ export default function Login() {
             if (!response.ok)
                 throw new Error(data.message);
             else {
+                setIsAuthenticated(true);
                 setRole(data.role);
                 setUsername(data.username);
                 navigate("/home");
