@@ -23,7 +23,7 @@ export default function Login() {
         try {
             const response = await fetch(`${serverURL}/api/auth/login`, { 
                 headers: { 
-                    "ngrok-skip-browser-warning": "",
+                    "ngrok-skip-browser-warning": "true",
                     "Content-Type": "application/json"
                 },
                 credentials: "include",

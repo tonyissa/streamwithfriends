@@ -23,7 +23,7 @@ export default function RootHandler() {
                     throw new Error("Health check failed");
 
                 const authResponse = await fetch(`${serverURL}/api/auth/verify`, { 
-                    credentials: 'include', 
+                    credentials: 'include',
                     headers: { "ngrok-skip-browser-warning": "true" }
                  });
                  

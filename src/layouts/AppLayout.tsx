@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AppLayout() {
     return (
@@ -8,6 +9,7 @@ export default function AppLayout() {
             <main className="flex-1 flex justify-center items-center">
                 <Outlet />
             </main>
+            <Toaster />
         </>
     )
 }

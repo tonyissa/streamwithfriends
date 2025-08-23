@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext";
 import type { LoginResponse } from "../types/Responses";
 
 export default function Register() {
-    const { serverURL, setRole, setUsername } = useContext(AppContext);
+    const { serverURL, setRole, setUsername, setIsAuthenticated } = useContext(AppContext);
     const [error, setError] = useState<string>("");
     const [userField, setUserField] = useState<string>("");
     const [passField, setPassField] = useState<string>("");
@@ -30,7 +30,7 @@ export default function Register() {
         try {
             const response = await fetch(`${serverURL}/api/auth/register`, { 
                 headers: { 
-                    "ngrok-skip-browser-warning": "",
+                    "ngrok-skip-browser-warning": "true",
                     "Content-Type": "application/json"
                 },
                 credentials: "include",
@@ -45,6 +45,7 @@ export default function Register() {
             else {
                 setRole(data.role);
                 setUsername(data.username);
+                setIsAuthenticated(true);
                 navigate("/home");
             }
         } catch (err) {
