@@ -7,8 +7,8 @@ export default function ServerSetup() {
     const location = useLocation();
     const err = location.state?.err;
     const navigate = useNavigate();
-    const { setServerURL } = useContext(AppContext);
-    const [input, setInput] = useState<string>("");
+    const { serverURL, setServerURL } = useContext(AppContext);
+    const [input, setInput] = useState<string>(serverURL);
     const [error, setError] = useState<string>(err);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value);

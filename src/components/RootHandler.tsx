@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthResponse } from "../types/Responses";
+import { Spinner } from "./ui/shadcn-io/spinner";
 
 export default function RootHandler() {
     const { serverURL, setIsAuthenticated, setUsername, setRole } = useContext(AppContext);
@@ -46,5 +47,5 @@ export default function RootHandler() {
         performChecks();
     }, [navigate, serverURL, setIsAuthenticated, setRole, setUsername, from]);
 
-    return <div>Loading...</div>;
+    return ( <Spinner className='text-[#e0e6e8]' size={32} /> );
 }

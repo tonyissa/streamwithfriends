@@ -16,7 +16,7 @@ body {
 
 .input, .input::placeholder {
 	color: #646867;
-	font-size: 1rem;
+	font-size: 14px;
 }
 
 .dark-shadow {
