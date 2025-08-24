@@ -16,3 +16,7 @@ export interface LoginResponse {
 export interface CodeResponse {
     code: string;
 }
+
+export interface WatchRequestResponse {
+    viewerToken: string;
+}

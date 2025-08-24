@@ -33,7 +33,8 @@ export default function ServerSetup() {
             </div>
             <button 
                 className="bg-tealqoise py-2 px-3 w-1/2 cursor-pointer text-[#18181d] text-[16px] rounded-md transition-all teal-shadow"
-                onClick={handleSubmit}>
+                onClick={handleSubmit}
+            >
                 Submit
             </button>
             <div className={`text-sm text-red-500`}>{error}</div>

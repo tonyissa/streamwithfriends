@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
-import { lazy, Suspense } from 'react'
-import AdminPage from './pages/Admin';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import { lazy, Suspense } from 'react';
 import { Spinner } from './components/ui/shadcn-io/spinner';
 
 const AppLayout = lazy(() => import("./layouts/AppLayout")); 
@@ -11,7 +10,6 @@ const LoginPage = lazy(() => import("./pages/Login"));
 const RegisterPage = lazy(() => import("./pages/Register"));
 const HomePage = lazy(() => import("./pages/Home"));
 const ProtectedRoute = lazy(() => import("./layouts/ProtectedRoute"));
-const AdminRoute = lazy(() => import("./layouts/AdminRoute"));
 
 export default function Router() {
   return (
@@ -25,9 +23,6 @@ export default function Router() {
             <Route path="register" element={ <RegisterPage /> } />
             <Route path="home" element={ <ProtectedRoute /> }>
               <Route index element={ <HomePage /> } />
-            </Route>
-            <Route path="admin" element={ <AdminRoute /> }>
-              <Route index element={ <AdminPage /> } />
             </Route>
           </Route>
         </Routes>
