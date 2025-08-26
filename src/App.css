@@ -26,6 +26,12 @@ body {
                  -7px -7px 14px #19191d;
 }
 
+.video-shadow {
+    background: #17171b;
+    box-shadow:  20px 20px 25px #0e0e11,
+                -20px -20px 25px #202025;
+}
+
 .teal-shadow:hover {
     background: #00ffc8;
     box-shadow:  2px 2px 10px #00ebb8,

@@ -6,7 +6,7 @@ export default function AppLayout() {
     return (
         <>
             <Header />
-            <main className="flex-1 flex justify-center items-center mt-3! mb-12!">
+            <main className="flex-1 flex justify-center items-center pt-5! pb-12!">
                 <Outlet />
             </main>
             <Toaster />

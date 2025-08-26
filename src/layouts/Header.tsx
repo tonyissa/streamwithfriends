@@ -31,7 +31,7 @@ export default function Header() {
             </Link>
             {role == "admin" && 
                 <button
-                    className="bg-tealqoise py-2 px-3 cursor-pointer text-[#18181d] text-[16px] rounded-md transition-all teal-shadow"
+                    className="bg-tealqoise py-2 px-3 cursor-pointer text-[#18181d] rounded-md transition-all teal-shadow"
                     onClick={handleInviteGenerate}
                 >
                     Generate Invite
