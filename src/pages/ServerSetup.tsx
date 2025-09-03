@@ -11,7 +11,13 @@ export default function ServerSetup() {
     const [input, setInput] = useState<string>(serverURL);
     const [error, setError] = useState<string>(err);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const field = e.target.value;
+        if (input.endsWith("/"))
+            setInput(field.slice(0, field.length - 1));
+        else
+            setInput(field);
+    }
 
     function handleSubmit() {
         if (!input) {

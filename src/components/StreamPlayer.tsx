@@ -18,7 +18,7 @@ export default function StreamPlayer({ viewerToken }: StreamPlayerProps) {
                 const room = new Room();
                 console.log("New room created");
                 room.on(RoomEvent.TrackSubscribed, async (track) => {
-                    track.attach(videoRef.current!)
+                    track.attach(videoRef.current!);
                     console.log("Track subscribed");
                 });
                 room.on(RoomEvent.TrackUnsubscribed, () => {
