@@ -37,8 +37,8 @@ export default function StreamPlayer({ viewerToken }: StreamPlayerProps) {
     }, [viewerToken]);
 
     return (
-        <div className="video-shadow">
-            <video className="h-full w-auto" ref={videoRef} autoPlay controls>
+        <div className="video-shadow max-w-[1280px]">
+            <video className="h-full" ref={videoRef} autoPlay controls>
                 <source src={blank_vid} />
             </video>
         </div>
