@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import { AppContext } from "./AppContext";
 
 interface AppProps {
@@ -6,17 +6,10 @@ interface AppProps {
 }
 
 export function AppProvider({ children }: AppProps) {
-    const [serverURL, setServerURL] = useState<string>(localStorage.getItem("serverURL") ?? "");
+    const [serverURL, setServerURL] = useState<string>("https://close-genuinely-seahorse.ngrok-free.app");
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [username, setUsername] = useState<string>("");
     const [role, setRole] = useState<string>("");
-
-    useEffect(() => {
-        if (serverURL)
-            localStorage.setItem("serverURL", serverURL)
-        else
-            localStorage.removeItem("serverURL");
-    }, [serverURL])
     
     return (
         <AppContext.Provider 
