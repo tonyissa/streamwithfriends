@@ -20,6 +20,11 @@ export default function Login() {
             return;
         }
 
+        if (!passField.includes("@") && !passField.includes(".")) {
+            setError("Please enter valid email");
+            return;
+        }
+
         try {
             const response = await fetch(`${serverURL}/api/auth/login`, { 
                 headers: { 
@@ -51,7 +56,7 @@ export default function Login() {
     return (
         <div className="w-96 flex flex-col justify-center items-center p-8 gap-8 bg-darkGrey dark-shadow">
             <div className="w-full h-10">
-                <Input placeholder="Enter your username" handleChange={handleUsernameChange} value={userField} />
+                <Input placeholder="Enter your email" handleChange={handleUsernameChange} value={userField} />
             </div>
             <div className="w-full h-10">
                 <Input placeholder="Enter your password" handleChange={handlePasswordChange} value={passField} password={true} />

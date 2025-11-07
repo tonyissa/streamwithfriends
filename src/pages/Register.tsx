@@ -26,6 +26,11 @@ export default function Register() {
             setError("Please enter all fields");
             return;
         }
+        
+        if (!userField.includes("@") || !userField.includes(".")) {
+            setError("Please enter valid email");
+            return;
+        }
 
         try {
             const response = await fetch(`${serverURL}/api/auth/register`, { 
@@ -58,7 +63,7 @@ export default function Register() {
     return (
         <div className="w-96 flex flex-col justify-center items-center p-8 gap-8 bg-darkGrey dark-shadow">
             <div className="w-full h-10">
-                <Input placeholder="Enter your username" handleChange={handleUsernameChange} value={userField} />
+                <Input placeholder="Enter your email" handleChange={handleUsernameChange} value={userField} />
             </div>
             <div className="w-full h-10">
                 <Input placeholder="Enter your password" handleChange={handlePasswordChange} value={passField} password={true} />
